@@ -20,6 +20,16 @@ Mozilla Firefox采用的该内核，特点是代码完全公开，开发程度�
 4. Chromium/Blink(chrome)
 在chromium项目中研发的Blink渲染引擎，内置于Chrome浏览器中Blink是webkit的分支。
 
+## 浏览器前缀
+
+| 浏览器前缀    | 浏览器                                    |
+| -------- | -------------------------------------- |
+| -webkit- | Google Chrome, Safari, Android Browser |
+| -moz-    | Firefox                                |
+| -o-      | Opera                                  |
+| -ms-     | Internet Explorer, Edge                |
+| -khtml-  | Konqueror                              |
+
 ## web标准
 浏览器内核不同，工作原理解析都不同，显示的就会有差异
 
