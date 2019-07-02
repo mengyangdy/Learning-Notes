@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            position: absolute;
+            left: 0;
+            top: 100px;
+        }
+        button{
+            width: 100px;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">more>>></button>
+    <button id="btn_left">more<<<</button>
+    <div class="box"></div>
+    <script>
+        //代码雍容 继续改进
+    var btn=document.getElementById('btn');
+    var btn_left=document.getElementById('btn_left');
+    var box=document.querySelector('div'); 
+    var timer=null;
+    var num=0;
+    btn.onclick=function  (){
+        timer=setInterval(function  (){
+            startMove(500,10)
+        },20)
+    }
+    btn_left.onclick=function  (){
+        timer=setInterval(function  (){
+            startMove(0,-5)
+        },20)
+    }
+
+    //封装运动函数
+    function startMove (target,speed){
+        clearInterval(timer)
+        //speed 每次运动的步数 target 运动到的目标位置
+        //num是元素现在所处的位置
+        num+=speed;
+        //向右运动speed正数
+        if (box.offsetLeft == target) {
+            clearInterval(timer);
+        }else{
+            box.style.left=num+'px';
+        }
+
+    }
+    </script>
+</body>
+</html>
