@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //函数递归
+    //求1+2+3+4..+n n需要传入
+        // function getSum (n){
+        // var sum=0;
+        // for(var i=0;i<=n;i++){
+        //     sum+=i
+        // }
+        // return sum;
+        // }
+            function getSum (n){
+                if (n === 1) {
+                    return 1;
+                }
+                return n+getSum(n-1);
+            }
+
+
+        var sum1=getSum(100);
+        console.log(sum1);
+        //求1+3+5+7+9+n（奇数）
+        function getSum2 (n){
+            if (n === 1) {
+                return 1;
+            }
+            return n+getSum2(n-2)
+        }
+        //alert(getSum2(7));
+
+
+        //斐波那契额数列 1 1 2 3 5 ......前15项
+        function getSum3 (n){
+            if (n===1 |n=== 2) {
+               return 1
+            }
+            return getSum3(n-1)+getSum3(n-2);
+        }
+       var rul= getSum3(15);
+       console.log(rul);
+       
+    </script>
+</body>
+</html>
