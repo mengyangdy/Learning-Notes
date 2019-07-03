@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            position: absolute;
+            left: 0;
+            top: 100px;
+        }
+        button{
+            width: 100px;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">start</button>
+    <div class="box"></div>
+    <script>
+    var btn=document.getElementById('btn');
+    var btn_left=document.getElementById('btn_left');
+    var box=document.querySelector('div'); 
+    var timer=null;
+    var num=0;
+    btn.onclick=function  (){
+        startMove(box,400)
+    }
+
+    function startMove (obj,target){
+        clearInterval(timer)
+        var speed=(target-obj.offsetLeft)/10
+        timer=setInterval(function () {
+            num+=speed;
+        if (Math.abs(target-obj.offsetLeft)<7) {
+            clearInterval(timer);
+            obj.style.left=target+'px';
+        }else{
+            obj.style.left=num+'px';
+        }
+        },20)
+    }
+    </script>
+</body>
+</html>
