@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  6666666
+  <script>
+    // var arr = [10, 20, 30];
+    // console.log(11111);
+
+    // for (var i = 0; i < arr.length; i++) {
+    //   arr[i] = function () {
+    //     console.log(i)
+    //   }
+    // }
+    //console.log(111)
+
+    // for (var i = 0; i < 3; i++) {
+    //   setTimeout(function () {
+    //     console.log(i)// 3 3 3
+    //   }, 0)
+    // }
+    // console.log(222)
+    // var name = "The Window";
+    // var object = {
+    //   name: "My Object",
+    //   getNameFunc: function () {
+    //     return function () {
+    //       return this.name;
+    //     };
+    //   }
+    // };
+
+    // console.log(object.getNameFunc()())
+    // var name = "The Window";
+    // var object = {
+    //   name: "My Object",
+    //   getNameFunc: function () {
+    //     var that = this;
+    //     return function () {
+    //       return that.name;
+    //     };
+    //   }
+    // };
+    // console.log(object.getNameFunc()())
+    function fn1() {
+      console.log(111)
+      fn2()
+      console.log('fn1')
+    }
+
+    function fn2() {
+      console.log(222)
+      fn3()
+      console.log('fn2')
+    }
+
+    function fn3() {
+      console.log(333)
+      fn4()
+      console.log('fn3')
+    }
+
+    function fn4() {
+      console.log(444)
+      console.log('fn4')
+    }
+
+    fn1()
+  </script>
+</body>
+
+</html>
