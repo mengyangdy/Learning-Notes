@@ -36,29 +36,52 @@
     var timer=null;
     var num=0;
     btn.onclick=function  (){
-        timer=setInterval(function  (){
-            startMove(500,10)
-        },20)
+        startMove(500)
     }
     btn_left.onclick=function  (){
-        timer=setInterval(function  (){
-            startMove(0,-5)
-        },20)
+        startMove(0)
     }
 
     //封装运动函数
-    function startMove (target,speed){
+
+    //每次走的步数如果是7的话 盒子就不会停了 是个BUG 所以继续封装
+    // function startMove (target){
+    //     clearInterval(timer)
+    //     //speed 每次运动的步数 target 运动到的目标位置
+    //     //num是元素现在所处的位置
+    //     //运动方向怎么判断？根据目标位置和盒子的左边距来判断
+    //     //目标位置-盒子的左边距>0 证明目标位置在盒子的右边 需要向右走+++++
+    //     var speed=target-box.offsetLeft>0?5:-5;
+    //     timer=setInterval(function () {
+    //         num+=speed;
+    //     //向右运动speed正数
+    //     if (box.offsetLeft == target) {
+    //         clearInterval(timer);
+    //     }else{
+    //         box.style.left=num+'px';
+    //     }
+    //     },20)
+    // }
+
+    //再次封装 解决BUG
+    function startMove (target){
         clearInterval(timer)
         //speed 每次运动的步数 target 运动到的目标位置
         //num是元素现在所处的位置
-        num+=speed;
+        //运动方向怎么判断？根据目标位置和盒子的左边距来判断
+        //目标位置-盒子的左边距>0 证明目标位置在盒子的右边 需要向右走+++++
+        var speed=target-box.offsetLeft>0?7:-7;
+        timer=setInterval(function () {
+            num+=speed;
         //向右运动speed正数
-        if (box.offsetLeft == target) {
+        if (Math.abs(target-box.offsetLeft)<7) {
             clearInterval(timer);
+            //当距离小于一次的步数的时候 强制把盒子拉倒目标位置
+            box.style.left=target+'px';
         }else{
             box.style.left=num+'px';
         }
-
+        },20)
     }
     </script>
 </body>

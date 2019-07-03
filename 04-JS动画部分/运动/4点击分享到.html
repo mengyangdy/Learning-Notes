@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  *{
+    padding: 0;
+    margin: 0;
+  }
+  div{
+    width: 300px;
+    height: 300px;
+    background-color: aqua;
+    position: fixed;
+    bottom: 100px;
+    left:-300px;
+  }
+  span{
+    position: absolute;
+    left: 300px;
+    width: 28px;
+    height: 80px;
+    border: 1px solid #000;
+  }
+  </style>
+</head>
+<body>
+  <div>
+    <span>
+      分享到
+    </span>
+  </div>
+  <script>
+  var box=document.querySelector('div');
+  var timer=null;
+  box.onmouseover=function(){
+    move(this,0)
+  }
+  box.onmouseout=function(){
+    move(this,-300)
+  }
+  function move(obj,target) {
+    clearInterval(timer);
+    timer=setInterval(function () {
+        var speed=target-obj.offsetLeft>0?5 :-5;
+        if (obj.offsetLeft === target) {
+          clearInterval(timer)
+        }else{
+          obj.style.left=obj.offsetLeft+speed+'px';
+        }
+    },20)
+  }
+  </script>
+</body>
+</html>
