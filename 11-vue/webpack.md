@@ -44,7 +44,11 @@ limit 文件大小
 es6转为es5
 
 ## webpack中配置Vue
+Vue在最终构建发布的版本的时候 构建了两类版本
+runtime-only  代码中不能由任何complate
+runtime-compiler 代码中可以有complate 因为compiler可以用于编译template
 
+SPA(simple page webappliation)
 
 
 ## plugin的使用
