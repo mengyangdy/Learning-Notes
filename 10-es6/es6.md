@@ -36,3 +36,54 @@ name:name 可以写成name
 run(){
 
 }
+
+
+
+# 高阶函数
+数组操作的高阶函数 filter /map /reduce
+需求1 取出所有小于100的数字
+
+```javascript
+const arr=[10,20,111,222,444,40,50]
+/*
+每次从数组中取出来一个值传入回调函数中操作
+filter中的回调函数有一个要求：必须返回一个Boolean值
+true 当返回的是true时，函数内部会自动将这次回调的n加入到新的数组中
+false 当返回值是false时 函数内部会过滤掉这次的n
+*/
+let newArr=  arr.filter(function(n){
+return n<100
+})
+/*
+2.将所有小于100的数字进行转化：全部*2
+*/
+let newarr2=newArr.map(function(n){
+return n*2
+})
+/*
+3. 所有的值相加
+reduce函数的使用
+reduce函数对数组中所有的内容进行汇总 要么全部相乘 要么全部相加
+reduce(参数以，参数二)
+在下面的例子中 回调函数就是参数一（preValue：上一个值，n：现在的值）  起始值0 就是参数二
+*/
+let total = newarr2.reduce(function(preValue,n){
+return 
+}，0)
+
+//更高阶的写法  函数式编程
+let total=arr.filter(function(n){
+rerurn n<100
+}).map(function(n){
+return n*2
+}).reduce(function(preValue,n){
+return preValue+n
+},0)
+
+
+//es6
+let total=arr.filter(n=> n<100).map(n=> n*2).reduce((pre,n)=>pre+n)
+
+```
+
+

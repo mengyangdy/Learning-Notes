@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .active{
+        color: red;
+    }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(item,index) of movies" :class="{active:currentindex === index}" @click='handle(index)'>
+                {{item}}
+            </li>
+        </ul>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+    new Vue({
+        el:'#app',
+        data:{
+            movies:['海王','荒岛求生','蜘蛛侠','雷神'],
+            currentindex:0
+        },
+        methods:{
+            handle(index){
+                this.currentindex =index
+            }
+        }
+    })
+    
+    </script>
+</body>
+</html>

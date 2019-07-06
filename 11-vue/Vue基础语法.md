@@ -47,3 +47,82 @@ UNshift
 splice
 sort
 reverse
+
+
+
+
+
+数字保留两位小数
+
+toFixed 
+
+
+
+过滤器
+
+
+
+按钮的disabled
+
+
+# 表单绑定v-model
+## 双向绑定的本质
+~~~
+// 两个指令的结合
+v-bind；value='message' 将数据message绑定到input框里
+@input：'change' 获取input最新输入的内容赋值给message
+  <div id="app">
+        <input type="text" v-bind:value='message' v-on:input='valueChange'>
+        <h2>{{message}}</h2>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+    new Vue({
+        el:'#app',
+        data:{
+            message:'sssss'
+        },
+        methods:{
+            valueChange(event){
+                this.message=event.target.value
+            }
+        }
+    })
+    
+
+    
+<input type="text" v-model="message">
+等同于
+<input type="text" v-bind:value="message" v-on:input="message = $event.target.value">
+
+~~~
+
+## v-model radio 
+v-model 绑定的是同一个数据 其中的name就可以去掉 用v-model互斥
+
+
+## v-model CheckBox
+两种情况：
+单选框
+
+
+复选框
+
+## 值绑定
+就是动态的给value赋值而已：
+我们前面的value中的值，可以回头去看一下，都是在定义input的时候直接给定的。
+但是真实开发中，这些input的值可能是从网络获取或定义在data中的。
+所以我们可以通过v-bind:value动态的给value绑定值。
+这不就是v-bind吗？
+## 修饰符的使用
+lazy 
+默认情况下 v-model默认是在input事件中同步输入框的数据的
+也就是说一旦数据发生改变对应的data的数据就会自动发生改变
+lazy修饰符可以让数据在失去焦点或者回车时才会更新
+number
+默认情况下 在输入框中我们无论输入的是字母还是数组 都会被当做字符串类型进行处理
+但是我们希望处理的是数字类型 name最好直接将内容当做数组处理
+number修饰符可以再输入框中输入的内容自动转化为数字类型
+trim修饰符
+如果输入的内容收尾有很多空格 通常我们希望将其去除
+trim修饰符可以过滤内容左右两边的空格
