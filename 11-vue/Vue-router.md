@@ -168,11 +168,15 @@ const Home = () => import('../components/Home.vue')
 
 # Vue-router参数传递
 
+## 传递参数的方式
 传递参数主要有两种类型: params和query
+
 params的类型:
 配置路由格式: /router/:id
 传递的方式: 在path后面跟上对应的值
 传递后形成的路径: /router/123, /router/abc
+
+
 query的类型:
 配置路由格式: /router, 也就是普通配置
 传递的方式: 对象中使用query的key作为传递方式
@@ -211,6 +215,17 @@ $route为当前router跳转对象里面可以获取name、path、query、params�
 
 
 # Vue-router导航守卫
+
+我们来考虑一个需求: 在一个SPA应用中, 如何改变网页的标题呢?
+网页标题是通过<title>来显示的, 但是SPA只有一个固定的HTML, 切换不同的页面时, 标题并不会改变.
+但是我们可以通过JavaScript来修改<title>的内容.window.document.title = '新的标题'.
+那么在Vue项目中, 在哪里修改? 什么时候修改比较合适呢?
+普通的修改方式:
+我们比较容易想到的修改标题的位置是每一个路由对应的组件.vue文件中.
+通过mounted声明周期函数, 执行对应的代码进行修改即可.
+但是当页面比较多时, 这种方式不容易维护(因为需要在多个页面执行类似的代码).
+有没有更好的办法呢? 使用导航守卫即可.
+什么是导航守卫?
 vue-router提供的导航守卫主要用来监听监听路由的进入和离开的.
 vue-router提供了beforeEach和afterEach的钩子函数, 它们会在路由即将改变前和改变后触发.
 
@@ -276,6 +291,7 @@ keep-alive 是 Vue 内置的一个组件，可以使被包含的组件保留状�
 include - 字符串或正则表达，只有匹配的组件会被缓存
 exclude - 字符串或正则表达式，任何匹配的组件都不会被缓存
 router-view 也是一个组件，如果直接被包在 keep-alive 里面，所有路径匹配到的视图组件都会被缓存
+
 
 
 
