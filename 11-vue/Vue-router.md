@@ -168,16 +168,115 @@ const Home = () => import('../components/Home.vue')
 
 # Vue-router参数传递
 
+传递参数主要有两种类型: params和query
+params的类型:
+配置路由格式: /router/:id
+传递的方式: 在path后面跟上对应的值
+传递后形成的路径: /router/123, /router/abc
+query的类型:
+配置路由格式: /router, 也就是普通配置
+传递的方式: 对象中使用query的key作为传递方式
+传递后形成的路径: /router?id=123, /router?id=abc
+**如何使用它们呢? 也有两种方式: <router-link>的方式和JavaScript代码方式**
+
+~~~
+：to='{
+path:'/home/'+123,
+query:{name:'why',age:18}
+}'
+
+//js代码传递参数
+this.$router.push({
+path:'/home/'+123,
+query:{name:'why',age:18}
+})
+
+~~~
+
+**获取参数**
+在使用了 vue-router 的应用中，路由对象会被注入每个组件中，赋值为 this.$route ，并且当路由切换时，路由对象会被更新。
+~~~
+$route.params
+$route.query
+~~~
+
+
+
+
+$route和$router是有区别的
+$router为VueRouter实例，想要导航到不同URL，则使用$router.push方法
+$route为当前router跳转对象里面可以获取name、path、query、params等 
+
 
 
 
 # Vue-router导航守卫
+vue-router提供的导航守卫主要用来监听监听路由的进入和离开的.
+vue-router提供了beforeEach和afterEach的钩子函数, 它们会在路由即将改变前和改变后触发.
 
 
+
+我们可以利用beforeEach来完成标题的修改.
+首先, 我们可以在钩子当中定义一些标题, 可以利用meta来定义
+其次, 利用导航守卫,修改我们的标题.
+
+
+导航钩子的三个参数解析:
+to: 即将要进入的目标的路由对象.
+from: 当前导航即将要离开的路由对象.
+next: 调用该方法后, 才能进入下一个钩子.
+
+
+
+
+## 组件内的守卫
+~~~
+const Foo = {
+  template: `...`,
+  beforeRouteEnter (to, from, next) {
+    // 在渲染该组件的对应路由被 confirm 前调用
+    // 不！能！获取组件实例 `this`
+    // 因为当守卫执行前，组件实例还没被创建
+  },
+  beforeRouteUpdate (to, from, next) {
+    // 在当前路由改变，但是该组件被复用时调用
+    // 举例来说，对于一个带有动态参数的路径 /foo/:id，在 /foo/1 和 /foo/2 之间跳转的时候，
+    // 由于会渲染同样的 Foo 组件，因此组件实例会被复用。而这个钩子就会在这个情况下被调用。
+    // 可以访问组件实例 `this`
+  },
+  beforeRouteLeave (to, from, next) {
+    // 导航离开该组件的对应路由时调用
+    // 可以访问组件实例 `this`
+  }
+}
+~~~
+
+#  路由独享的守卫
+~~~
+const router = new VueRouter({
+  routes: [
+    {
+      path: '/foo',
+      component: Foo,
+      beforeEnter: (to, from, next) => {
+        // ...
+      }
+    }
+  ]
+})
+
+~~~
 
 
 
 # keep-alive
+
+keep-alive 是 Vue 内置的一个组件，可以使被包含的组件保留状态，或避免重新渲染。
+它们有两个非常重要的属性:
+include - 字符串或正则表达，只有匹配的组件会被缓存
+exclude - 字符串或正则表达式，任何匹配的组件都不会被缓存
+router-view 也是一个组件，如果直接被包在 keep-alive 里面，所有路径匹配到的视图组件都会被缓存
+
 
 
 
