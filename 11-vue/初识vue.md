@@ -200,9 +200,45 @@ set:function(newValue){
 #### 计算属性有缓存
 
 
-#### 作业
+
+# 为什么数据变了视图会自动更新 ？
+~~~
+//Vue中做到数据驱动视图主要是用到es5中的数据劫持 Object.defineProperty
+//Object.defineProperty
+
+let obj={
+	name:"aaa",
+	age:18
+}
+//数据劫持
+function observe(obj) {
+	if (typeof obj === 'object') {
+		//重新定义属性
+		for(let key in obj){
+			defineReactive(obj,key,obj[key])
+		}
+	}
+}
+
+//帮助我们函数重新定义对象属性 参数含义 那个对象？定义什么属性？属性的值
+function defineReactive(obj,key,value) {
+	Object.defineProperty(obj,key,{
+		get(){
+			return value;
+		},
+		set(newVal){
+			value=newVal
+			console.log('视图更新了')
+			
+		}
+	})
+}
+
+observe(obj)
+console.log(obj.name);//aaa
+obj.name='mengyang'
+console.log(obj.name);
 
 
-### 计算属性和methods的区别
-计算属性有缓存                   methods没有缓存
-如果多次使用时，计算属性只会调用一次
+
+~~~
