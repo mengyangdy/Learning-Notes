@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+	*{
+		padding: 0;
+		margin: 0;
+
+	}
+	#wrap{
+		width: 500px;
+		height: 500px;
+		background: gray;
+		display: flex;
+		/* 主轴居中 */
+		justify-content: center;
+		/* 侧轴居中 */
+		align-items: center;
+	}
+	#wrap #box{
+		width: 200px;
+		height: 200px;
+		background: pink;
+	}
+	/*
+	第一种方案:
+	父元素 position:relative
+	子元素 position:absolute
+	上下左右为0
+	margin auto即可
+	第二种方案:
+	top 50%
+	left 50%
+	margin-left:-100px
+	margin-top :-100px
+	或者
+	transform:translate(-50%,-50%)
+
+	 */
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<div id="box">
+
+		</div>
+	</div>
+</body>
+</html>

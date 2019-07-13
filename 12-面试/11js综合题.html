@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		// //变量 函数声明提升
+
+		// function Foo (){
+		// 	//没有var是全局变量重新赋值
+		// getName=function(){console.log(1)};
+		// //this 指向window
+		// return this;
+		// }
+		// //变量函数名字相同 函数为大 所以变量的就忽略
+		// //var getName;
+		// //当执行到14行的时候 getName重新赋值为function(){console.log(4)};
+		// //所以下面的console.log(5)就变成了console.log(4)
+		// //function getName(){console.log(5)};
+
+		// Foo.getName=function(){console.log(2)};
+		// Foo.prototype.getName=function(){console.log(3)};
+		// //getName=function(){console.log(4)};
+		// getName=function(){console.log(1)};
+
+
+
+
+		function Foo() {
+			getName = function () { console.log(1) };
+			return this;
+		}
+		Foo.getName = function () { console.log(2) };
+		Foo.prototype.getName = function () { console.log(3) };
+		var getName = function () { console.log(4) };
+		function getName() { console.log(5) };
+
+
+		//清写出下列的输出结果
+		Foo.getName()//2
+		getName()//4
+		// 运算符优先级 点运算符先执行但是函数名()并不能点调用所以先算前面的 先执行Foo() 然后点.getName()
+		//return this this 是window Foo()执行后的结果是window 就变成了window.getName()
+		Foo().getName()//1
+		getName();//1
+		//先执行Foo.getName() 然后new调用new (Foo.getName())----new(function(){console.log(2)})()
+		new Foo.getName()//2
+		//(new Foo()).getName()-----foo.getName() 原型链
+		new Foo().getName()//3
+		//new (new Foo()).getName()
+		new new Foo().getName()//3
+	</script>
+</body>
+
+</html>

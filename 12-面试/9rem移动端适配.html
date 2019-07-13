@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<!-- 同一个元素在不同的屏幕上的效果是一样的  这就是适配 -->
+	<style>
+		* {
+			padding: 0;
+			margin: 0;
+		}
+
+		#box {
+			width: 200px;
+			height: 200px;
+			background: red;
+		}
+
+		/* html根元素字体大小设置屏幕区域的宽 */
+	</style>
+</head>
+
+<body>
+	<div id="box"></div>
+	<script>
+		window.onload = function () {
+			//获取整个屏幕区域的宽度
+			var width = document.documentElement.clientWidth;
+			var htmeNode = document.querySelector('html');
+			htmeNode.style.fontSize = widtyh + 'px';
+		}
+	</script>
+</body>
+
+</html>
