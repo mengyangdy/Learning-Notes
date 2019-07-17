@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			.main{
+				border: 5px solid red;
+			}
+			.dv1{
+				width: 100px;
+				height: 100px;
+				background: #000000;
+				float: left;
+			}
+			.dv2{
+				width: 100px;
+				height: 100px;
+				background:blue;
+				float: left;
+			}
+			.dv3{
+				width: 100px;
+				height: 100px;
+				background: orange;
+				float: left;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 清除浮动的几种方法 -->
+		<!-- 
+		 清除浮动:
+		 1. 在浮动元素后面添加一个盒子class clear:both
+		 缺点:多了一个盒子
+		 2.给父元素添加overflow:hidden
+		 3.使用伪元素
+		 :after{
+			 content:"";
+			 clear:both;
+			 display:table;
+		 
+		 
+		 -->
+		<div class="main">
+			<div class="dv1"></div>
+			<div class="dv2"></div>
+			<div class="dv3"></div>
+		</div>
+	</body>
+</html>
