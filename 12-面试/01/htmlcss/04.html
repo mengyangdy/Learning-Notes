@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title></title>
-	</head>
-	<body>
-		<!-- <script type="text/javascript">
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+
+<body>
+	<!-- <script type="text/javascript">
 			for(var i=0;i<3;i++){
 				setTimeout(function(){
 					console.log(i)//三秒弹出3
 				},1000*i)	
 			}
 		</script> -->
-		<!-- <script type="text/javascript">
+	<!-- <script type="text/javascript">
 			var x
 			for(var i=0,j=0;i<6,j<10;i++,j++){
 				console.log(i)
@@ -24,7 +26,7 @@
 			console.log(j)
 			console.log(x)
 		</script> -->
-		<!-- <script type="text/javascript">
+	<!-- <script type="text/javascript">
 			var bar=1
 			function test (){
 				console.log(bar);//undefined
@@ -33,15 +35,44 @@
 			}
 			test()                                            
 		</script> -->
-		 <script type="text/javascript">
+	<!-- <script type="text/javascript">
 			var foo=function(){console.log(1)};
 			function foo(){console.log(2)}
 			foo()//1
-		</script> 
-		<!-- 函数内部预解析等
+		</script>  -->
+	<!-- 函数内部预解析等
 		 优先级:变量>普通函数>参数>提升
-		 
-		 
 		 -->
-	</body>
+	<!-- <script>
+		function c() {
+			var b = 1;
+			function a() {
+				console.log(b);//undefined
+				var b = 2;
+				console.log(b);//2
+			}
+			a();
+			console.log(b);//1
+		}
+		c()
+	</script> -->
+	<script>
+	function Foo (){
+		getName=function(){alert(1)}
+		return this
+	}
+	Foo.getName=function(){alert(2)}
+	Foo.prototype.getName=function(){alert(3)}
+	var getName=function(){alert(4)}
+	function getName(){alert(5)}
+
+	Foo.getName();//2
+	getName();//4
+	Foo().getName();//1
+	getName();//1
+	new Foo().getName();//3
+
+	</script>
+</body>
+
 </html>
