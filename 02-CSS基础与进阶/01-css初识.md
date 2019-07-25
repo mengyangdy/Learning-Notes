@@ -301,7 +301,7 @@ specificity用一个四位的数 字串(CSS2是三位)来表示，更像四个�
 7. 同一类选择器则遵循就近原则。
 ~~~
 
-# CSS 背景(background)
+## CSS 背景(background)
 
 CSS 可以添加背景颜色和背景图片，以及来进行图片设置。
 
