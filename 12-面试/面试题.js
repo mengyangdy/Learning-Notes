@@ -241,70 +241,185 @@ switch (str) {
 	console.log(a);//
 	//[0,1)*(7-5+1)===[0,3)+5====[5,8)
 /**
- * 20、 2012年的春节是2012年1月23日请写一段代码算出现在距离春节还有多少
+ * 20、 2012年的春节是2012年1月23日请写一段代码算出现在距离2012春节是多少
 天多少小时多少分多少秒。 
  */
-
+<script type="text/javascript">
+		//记录当前的时间
+    var date1=new Date();
+    //console.log(date1);
+		//记录2012年春节的时间
+    var date2=new Date(2012,1,23,0,0,0);
+    //console.log(date2);
+		//当前时间与2012年的毫秒数
+    var dateValue=date1.getTime()-date2.getTime();
+		//console.log(dateValue);
+		//相差的天数
+		var days=Math.floor(dateValue/(24*3600*1000));
+		//console.log(days);
+		//不够一天的毫秒数
+		var hoursValue=dateValue%(24*3600*1000);
+		//相差多少小时
+		var hours=Math.floor(hoursValue/(3600*1000));
+		//不够一小时的毫秒数
+		var minutesValue=hoursValue%(3600*1000);
+		//相差多少分钟
+		var minutes=Math.floor(minutesValue/(60*1000));
+		//不够分钟的毫秒数
+		var secondsValue=minutesValue%(60*1000);
+		//相差多少秒
+		var seconds=Math.floor(secondsValue/1000);
+		var time='相差'+days+'天'+hours+'小时'+minutes+'分'+seconds+'秒';
+		console.log(time);
+  </script>
 
 
 
 //21、 见如下代码 
-<
-div name = 'A' > InfoA - 1 < /div>  <
-	div name = 'A' > InfoA - 2 < /div>  <
-	div name = 'B' > InfoB - 1 < /div> 
+<div name = 'A' > InfoA - 1 < /div>  
+<div name = 'A' > InfoA - 2 < /div>  
+<div name = 'B' > InfoB - 1 < /div> 
 	//请使用Javascript找出name='A'的内容并用alert方法显示出来。如上的代码最终应该打印出 “InfoA-1,InfoA-2” 
+<script type="text/javascript">
+	//只要name为A的值 不要name为B的值
+var divs=document.getElementsByTagName('div');
+var divsValue='';
+for (var i=0;i<divs.length;i++) {
+	//先拿出来name的值
+	var attr=divs[i].getAttribute('name');
+	//console.log(attr);
+	//判断name的值如果为A的话 就存进去 当第二次循环的时候就需要逗号隔开 所以需要两个判断 一name是不是A二是A的话要判断下divsValue是不是空 如果不是空的话就证明第一次已经存进去了 就需要再加个逗号隔开
+	if (attr&&attr== 'A') {
+		divsValue+=(!divsValue?'':',')+divs[i].innerHTML;
+	}
+}
+console.log(divsValue);// InfoA - 1 , InfoA - 2 
 
+</script>
 	/**
 	 * 
 	 * 22、 请问alert(Number('08'));输出的结果是什么 
+	 * 输出8 
+	 * 八进制字面值的第一位必须是0 然后是八进制数字0-7 如果字面值中的数值超出了范围 name前面的0将被忽略
+	 * 
 	23、 求出数组中的最大值 var a=[33,5,77,88,9,31,22]; 
 	 */
-
+<script type="text/javascript">
+	 var arr=[33,5,77,88,9,31,22]; 
+	 var item=0;
+	 for(var i=0;i<arr.length;i++){
+		 if (arr[i]>arr[i+1]) {
+		 	item=arr[i+1];
+			arr[i+1]=arr[i];
+			arr[i]=item;
+		 }
+	 }
+	 console.log(arr[arr.length-1]);
+	 var a=Math.max(33,5,77,88,9,31,22)
+	 console.log(a);
+</script>
 
 	//24、 给出删出li的正确方法。 
-	<
-	ul id = "ul1" >
-	<
-	li > nodeList < /li>  <
-	li > nodeList < /li>  <
-	li > nodeList < /li>  <
-	li > nodeList < /li>  <
-	li > nodeList < /li>  <
-	li > nodeList < /li>  <
-	li > nodeList < /li>  <
-	/ul> 
+	<ul id = "ul1" >
+	<li> nodeList </li>  
+	<li> nodeList </li>  
+	<li> nodeList </li>  
+	<li> nodeList </li>  
+	<li> nodeList </li>  
+	<li> nodeList </li>  
+	<li> nodeList </li>  
+	</ul> 
 var eles = document.getElementById('ul1').getElementsByTagName('li');
 //目的是把所有的li都删除以下这种做法有没有问题为什么会出问题如何解决 
 var liLength = eles.length
 for (var i = 0; i < li.length; i++) {
 	eles.item(i).parentNode.removeChild(eles.item(i));
 }
-
+//有问题 删除一项后 liLenght的值就在变化 所以到最后会有未删除项
+<script type="text/javascript">
+		var lis=document.getElementById('ul1').childNodes;
+		console.log(lis);
+		while(lis[0]){
+			lis[0].parentNode.removeChild(lis[0]);
+		}
+	</script>
 /**
  * 1. 说说数组的常用方法
+ * var a=new Array;
+ * a.concat(arr1...arrN) 将arr1到arrN的数组与a数组合并成一个新的数组 原数组不变
+ * a.join(',') 将数组中的各项以（，）拼接成一个字符串返回
+ * a.push(value)将value追加到a的最后一项 a.length自动加1
+ * a.pop()删除a数组的最后一项 a.length自动减1
+ * a.unshift(avlue)在a的第0项插入value值 原数组数据向后移一位 a.length自动加1
+ * a.shift()删除a第0项 a.length自动减1
+ * a.reverse()将a中数据反转
+ * a.toString()
+ * a.slice(indexa.indexb) 复制索引从indexa到indexb-1为一个新数组 原数组不变 不包括indexb项 通常这种传入2个索引的方法 第二个参数都不参与运算 indexb-1参与运算 
+ * a.splice(index,count,ele1,ele2) index是起始索引 count表示从index开始要删除的个数 后面的参数代表从index开始插入的值
+ * a.sort() 对a进行排序 但是排序按照ASCII表排序 会将13排在2前面 所以要传入一个函数进行排序排序
+ * a.filter
+ * 每次从数组中取出来一个值传入回调函数中操作
+filter中的回调函数有一个要求：必须返回一个Boolean值
+true 当返回的是true时，函数内部会自动将这次回调的n加入到新的数组中
+false 当返回值是false时 函数内部会过滤掉这次的n
+let newArr=  arr.filter(function(n){
+return n<100
+})
+ * a.map
+ * 将所有小于100的数字进行转化：全部*2
+ * let newarr2=newArr.map(function(n){
+return n*2
+})
+ * a.reduce
+ * reduce函数的使用
+reduce函数对数组中所有的内容进行汇总 要么全部相乘 要么全部相加
+reduce(参数一，参数二)
+在下面的例子中 回调函数就是参数一（preValue：上一个值，n：现在的值）  起始值0 就是参数二
+let total = newarr2.reduce(function(preValue,n){
+return 
+}，0)
  */
-
-
-
 
 
 /**
- * 2. 请把这个数组按从大到小的顺序排列var 
-arr=['90px','100px','10px','45px','30px']; 
+ * 2. 请把这个数组按从大到小的顺序排列
+ * 
+ * var arr=['90px','100px','10px','45px','30px']; 
  */
-
+<script type="text/javascript">
+		var arr=['90px','100px','10px','45px','30px']; 
+		// for(var i=0;i<arr.length;i++){
+		// 	var item=0;
+		// 	if (parseInt(arr[i])<parseInt(arr[i+1])) {
+		// 		item=arr[i+1];
+		// 		arr[i+1]=arr[i];
+		// 		arr[i]=item;
+		// 	}
+		// }
+		// console.log(arr);
+		arr.sort(function(a,b){
+			a=parseInt(a);
+			b=parseInt(b);
+			return a-b
+		})
+		console.log(arr);
+	</script>
 
 
 
 /**
  * 
  * 3. 字符串方法indexOf和lastIndexOf的功能是什么有什么区别
+ * indexOf() 从前往后检索 返回某个指定的字符串的值在字符串中首次出现的位置
+ * lastIndexOf() 从后向前检索 返回某个指定的字符串值在字符串中首次出现的位置输出正向索引
  */
 
 /**
  * 
  * 4. 字符串方法substr和substring的功能是什么有什么区别 
+ * 都表示截取字符串
+ * substr(startIndex,length) startIndex为起始索引 截取长度为length 返回一个新变量
+ * substring(startIndex,endIndex) startIndex为起始索引 结束索引为endIndex-1 返回一个新变量  不包括endIndex
  */
 
 /**
@@ -314,16 +429,65 @@ arr=['90px','100px','10px','45px','30px'];
 www.zhufengpeixun.cn?course1=js&course=css;  则obj的值为
 {course1:js,course:css  } 
  */
-
+<script type="text/javascript">
+		var str='www.zhufengpeixun.cn?course1=js&course=css';
+		function parseQueryString (str){
+			var obj={};
+			//aaa是一个数组 
+			var aaa=str.split('?')[1].split('&');
+			for (var i=0;i<aaa.length;i++) {
+				//再次分割
+				var current=aaa[i].split('=');
+				//将数组中的两个值以键值对的方式存在obj中
+				obj[current[0]]=current[1];
+			}
+			//循环完 数据全部存在obj中 返回obj
+			return obj;
+		}
+		console.log(parseQueryString(str));
+	</script>
 /**
  * 6. 请把这个数组里的数字替换成中文var arr=['壹','贰',3,4,'伍']; 
  */
-
+<script type="text/javascript">
+		var arr1=['零','壹','贰','叁','肆','伍','陆','柒','捌','玖'];
+		var arr=['壹','贰',3,4,'伍'];
+		// for(var i=0;i<arr.length;i++){
+		// 	if(arr[i] ==3){
+		// 		arr[i]=arr1[arr[i]]
+		// 	}else if(arr[i] ==4){
+		// 		arr[i]=arr1[arr[i]]
+		// 	}
+		// }
+		// console.log(arr);
+		var ss=arr.toString().replace(/\d/g,function(n){
+			return arr1[n]
+		})
+		var sss=ss.split(',');
+		console.log(sss);
+		console.log(typeof sss);
+	</script>
+	<script type="text/javascript">
+		var num=112299;
+		var arr1=['零','壹','贰','叁','肆','伍','陆','柒','捌','玖'];
+		var str=num.toString().replace(/\d/g,function(n){
+			return arr1[n];
+		})
+		console.log(str);
+		console.log(typeof str);
+	</script>
 /**
  * 
  * 7. 删除数组中的第m到第n项用什么方法
  */
-
+<script type="text/javascript">
+		var arr=[1,2,3,4,5,6,7,8,9];
+		function dele(a,m,n){
+			a.splice(m-1,n-m+1);
+			return a;
+		}
+		console.log(dele(arr,5,7));
+	</script>
 /**
  * 
  * 8. 请分析下面的数据格式按生成的结果写出代码 
@@ -333,9 +497,25 @@ var arr=[{name:'小秦',age:24,say:'我是在珠峰培训学习的js'},{name:'�
 “小秦今年24岁小秦说我是在珠峰培训学习的js” 
 “小丁今年25岁小丁说我是在珠峰培训学习的css” 
  */
-
+<script type="text/javascript">
+		var arr=[
+			{name:'小秦',
+			age:24,
+			say:'我是在珠峰培训学习的js'},
+			{name:'小西',
+			age:25,
+			say:'我是在珠峰培训学习的css'}
+		]; 
+		function getInfo(arr){
+			for(var i=0;i<arr.length;i++){
+				var obj=arr[i];
+				console.log(obj.name+'今年'+obj.age+'岁 '+obj.name+'说: '+obj.say);
+			}
+		}
+		getInfo(arr);
+	</script>
 /**
- * 9.  请用JavaScript写一个format函数实现如下需求15分 
+ * 9.  请用JavaScript写一个format函数实现如下需求
 调用format("{v1} {v2}!", {v1: "hello", v2: "zhufeng"})返回 "hello zhufeng!" 
 调用format("{0}, {1}!", ["hello", "zhufeng"])返回 "hello, zhufeng!" 
 调用format("{0}, {1}!", "hello", "zhufeng")返回 "hello, zhufeng!"

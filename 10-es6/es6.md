@@ -64,7 +64,7 @@ return n*2
 3. 所有的值相加
 reduce函数的使用
 reduce函数对数组中所有的内容进行汇总 要么全部相乘 要么全部相加
-reduce(参数以，参数二)
+reduce(参数一，参数二)
 在下面的例子中 回调函数就是参数一（preValue：上一个值，n：现在的值）  起始值0 就是参数二
 */
 let total = newarr2.reduce(function(preValue,n){
