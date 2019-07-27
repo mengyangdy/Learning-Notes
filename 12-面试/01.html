@@ -9,14 +9,25 @@
 </head>
 
 <body>
-	// <script type="text/javascript">
+	 <script type="text/javascript">
 	// 	请用JavaScript写一个format函数实现如下需求
 	// 	调用format("{v1} {v2}!", {v1: "hello", v2: "zhufeng"})返回 "hello zhufeng!" 
 	// 	调用format("{0}, {1}!", ["hello", "zhufeng"])返回 "hello, zhufeng!" 
 	// 	调用format("{0}, {1}!", "hello", "zhufeng")返回 "hello, zhufeng!"
-	function format (){
-		
+	function format (str,obj){
+		console.log(str);
+		console.log(typeof str);
+		if(arguments.length>2){
+			obj=Array.prototype.slice.call(arguments,1);
+		}
+		for (var attr in obj) {
+			str=str.replace('{'+attr+'}',obj[attr]);
+		}
+		return str;
 	}
+	console.log(format("{v1},{v2}!", {v1: "hello", v2: "mengyang"}));
+	console.log(format("{0}, {1}!", ["hello", "yuanyuan"]));
+	console.log(format("{0}, {1}!", "hello", "666"));
 	</script>
 	<!-- <script type="text/javascript">
 		var arr=[
