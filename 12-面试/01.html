@@ -14,9 +14,9 @@
 	// 	调用format("{v1} {v2}!", {v1: "hello", v2: "zhufeng"})返回 "hello zhufeng!" 
 	// 	调用format("{0}, {1}!", ["hello", "zhufeng"])返回 "hello, zhufeng!" 
 	// 	调用format("{0}, {1}!", "hello", "zhufeng")返回 "hello, zhufeng!"
+	//传入一个字符串 和 对象
 	function format (str,obj){
-		console.log(str);
-		console.log(typeof str);
+		//判断下传入的是不是这个 format("{0}, {1}!", "hello", "zhufeng")
 		if(arguments.length>2){
 			obj=Array.prototype.slice.call(arguments,1);
 		}

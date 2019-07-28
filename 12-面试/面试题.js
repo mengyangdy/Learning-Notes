@@ -353,10 +353,16 @@ for (var i = 0; i < li.length; i++) {
  * a.unshift(avlue)在a的第0项插入value值 原数组数据向后移一位 a.length自动加1
  * a.shift()删除a第0项 a.length自动减1
  * a.reverse()将a中数据反转
- * a.toString()
+ * a.toString() 将数组转化为字符串 用逗号隔开的字符串列表 返回一个字符串 与不使用任何参数调用的jion()方法返回的字符串一样。
  * a.slice(indexa.indexb) 复制索引从indexa到indexb-1为一个新数组 原数组不变 不包括indexb项 通常这种传入2个索引的方法 第二个参数都不参与运算 indexb-1参与运算 
  * a.splice(index,count,ele1,ele2) index是起始索引 count表示从index开始要删除的个数 后面的参数代表从index开始插入的值
  * a.sort() 对a进行排序 但是排序按照ASCII表排序 会将13排在2前面 所以要传入一个函数进行排序排序
+ * a.forEach() 遍历数组 从头到尾遍历数组，为某个元素调用指定的函数。传递函数包括三个参数（数组元素、元素索引、数组本身 ），如果只关心数组元素的值，可以只传一个参数。
+ * a.every() very() 方法用于检测数组所有元素是否都符合指定条件（通过函数提供）。 如果数组中检测到有一个元素不满足，则整个表达式返回 false ，且剩余的元素不会再进行检测。如果所有元素都满足条件，则返回 true。
+ * a.some() some() 方法用于检测数组中的元素是否满足指定条件（函数提供）。 some() 方法会依次执行数组的每个元素： 如果有一个元素满足条件，则表达式返回true , 剩余的元素不会再执行检测。如果没有满足条件的元素，则返回false。
+ * a.indexOf() ：搜索整个数组中具有给定值的位子，返回找到第一个元素的索引，如果没有找到就返回-1 indexOf()是从头找到尾
+ * a.lastIndexOf() 搜索整个数组中具有给定值的位子，返回找到第一个元素的索引，如果没有找到就返回-1 lastIndexOf()正好相反
+ * a.isArray() 判断对象是不是数组 
  * a.filter
  * 每次从数组中取出来一个值传入回调函数中操作
 filter中的回调函数有一个要求：必须返回一个Boolean值
@@ -379,7 +385,32 @@ let total = newarr2.reduce(function(preValue,n){
 return 
 }，0)
  */
-
+/**
+ * 字符串常用方法
+ * str..charAt(index);返回子字符串，index为字符串下标，index取值范围[0,str.length-1]
+ * str.charCodeAt(index)返回子字符串的unicode编码index取值范围[0,str.length-1]
+ * str.fromCharCode(num1,num2,...,numN);  根据unicode编码返回字符串
+ * str.concat()可以接收任意多个参数  虽然concat方法是专门用来拼接字符串的，但是实践中我们使用最多的还是加操作符+，因为其简易便行 
+ * str.substring(start,end);  两个参数都为正数，返回值：[start,end) 也就是说返回从start到end-1的字符   第一个参数指定子字符串开始位置，第二个参数表示子字符串最后一个字符后面的位置 
+ * str.slice(start,end);  两个参数可正可负，负值代表从右截取，返回值：[start,end) 也就是说返回从start到end-1的字符 第一个参数指定子字符串开始位置，第二个参数表示子字符串最后一个字符后面的位置 
+ * str.substr(start,length);  start参数可正可负，负数代表从右截取   第一个参数指定子字符串开始位置，第二个参数表示返回的字符个数 
+ * 除了 slice() 和 substr() 方法里的负值是代表从右截取，其他方法里的负值一律作为0处理
+ * 
+ *   这三个方法都会返回被操作字符串的一个子字符串，都接收一或两个参数 
+    如果没有给这些方法传递第二个参数，则将字符串的长度作为结束位置。这些方法也不会修改字符串本身，只是返回一个基本类型的字符串值
+ * str.
+ * str.
+ * str.
+ * str.
+ * str.
+ * str.
+ * str.
+ * str.
+ * str.
+ * str.
+ * str.
+ * 
+ */
 
 /**
  * 2. 请把这个数组按从大到小的顺序排列
