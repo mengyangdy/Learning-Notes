@@ -1,16 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Document</title>
+	</head>
 
-<body>
-
-	<!-- <script>
+	<body>
+		<script type="text/javascript">
+			Number.prototype.plus=function(n){
+				return this+n
+			}
+			Number.prototype.minus=function(n){
+				return this-n
+			}
+		</script>
+		<!-- <script type="text/javascript">
+				var arr=[1,2,3,4,5,6,7];
+				Array.prototype.toFunction=function(){
+					for(var i=0;i<this.length;i++){
+						this[i]=(function(a){
+							return function(){
+								return a;
+							}
+						})(this[i])
+					}
+				}
+				arr.toFunction()
+				console.log(arr[6]());
+		</script> -->
+<!-- <script type="text/javascript">
+	var arr=[1,2,3,4,5,6,7];
+	var maxNum=Math.max.apply(null,arr);
+	console.log(maxNum);
+</script> -->
+			<!-- <script type="text/javascript">
+				var inputs=document.getElementsByTagName('input');
+				for(var i=0;i<inputs.length;i++){
+					(function(i){
+						inputs[i].onclick=function(){alert(i+1)}
+					})(i)
+				}
+			</script> -->
+		<!-- <script type="text/javascript">
+			alert("改革春风吹\n满地")
+		</script> -->
+		<!-- <script type="text/javascript">
+			Array.prototype.distint=function(){
+				var a=this;
+				for(var i=0;i<arr.length;i++){
+					for (var j=i+1;j<a.length;) {
+						if(a[i] == a[j]){
+							a.splice(i,1);
+						}else{
+							j++
+						}
+					}
+				}
+				return a;
+			}
+		</script> -->
+		<!-- <script type="text/javascript">
+			function clock() {
+				var time = new Date();
+				var y = time.getFullYear();
+				var m = time.getMonth() + 1;
+				var day = time.getDate();
+				var week = time.getDay();
+				var h = time.getHours();
+				var min = time.getMinutes();
+				var second = time.getSeconds();
+				switch (week) {
+					case 0:
+						week = '日'
+						break;
+					case 1:
+						week = '一'
+						break;
+					case 2:
+						week = '二'
+						break;
+					case 3:
+						week = '三'
+						break;
+					case 4:
+						week = '四'
+						break;
+					case 5:
+						week = '五'
+						break;
+					case 6:
+						week = '六'
+						break;
+				}
+				var str='今天是'+y+'年'+m+'月'+day+'日，星期'+week+' '+h+'时'+min+'分'+min+'秒';
+				console.log(str);
+			}
+			clock();
+		</script> -->
+		<!-- <script>
 		function inserAfter(oldEle,newEle){
 			if(oldEle&&oldEle.nodeType === 1&&newEle&&newEle.nodeType === 1){
 				oldEle.nextSibling?oldEle.parentNode.inserBefore(newEle,oldEle.nextSibling):oldEle.parentNode.appendChild(newEle)
@@ -22,7 +112,7 @@
 	var box2=document.getElementById('box1').cloneNode(true);
 	inserAfter(box1,box2);
 		</script> -->
-<!-- 	<script>
+		<!-- 	<script>
 		//3562123761  -> 3,562,123,761 
 	var str='3562123761';
 	var count=0;
@@ -37,7 +127,7 @@
 	str1=str1.split('').reverse().join('');
 	console.log(str1);
 		</script> -->
-	<!-- <script type="text/javascript">
+		<!-- <script type="text/javascript">
 		var str='sdjksfssscfssdd';
 		var num=[];
 		//字符串去重后的数组
@@ -66,7 +156,7 @@
 			console.log(res[i]+'出现了'+num[i]+'次');
 		}
 	</script> -->
-	<!-- <script type="text/javascript">
+		<!-- <script type="text/javascript">
 		//正则方法
 		// var str='border-bottom-color';
 		// var strReg=str.replace(/\-[a-z]/g,function(part){
@@ -82,12 +172,12 @@
 		var str1=arr.join('')
 		console.log(str1);
 	</script> -->
-	<!-- <script type="text/javascript">
+		<!-- <script type="text/javascript">
 		 var str = "www.taobao.com"; 
 		 var res=str.split('').reverse().join('').replace('oat','')
 		 console.log(res);
 	</script> -->
-	<!-- <script type="text/javascript">
+		<!-- <script type="text/javascript">
 		 var str="aacccbbeeeddd"; 
 		 //保存字符出现的次数
 		 var sum=[];
@@ -117,7 +207,7 @@
 		  }
 		  
 	</script> -->
-	<!-- <script type="text/javascript">
+		<!-- <script type="text/javascript">
 		 var str="aahhgggsssjjj";
 		 function fn(str){
 			 var res=[];
@@ -131,7 +221,7 @@
 		 }
 		 console.log(fn(str));
 	</script> -->
-	<!-- <script type="text/javascript">
+		<!-- <script type="text/javascript">
 		var str="asadajhjkadaaasdasdasdasd"; 
 		var arr=[]; 
 		var pos=str.indexOf("d"); 
@@ -141,7 +231,7 @@
 		}
 		console.log(arr);
 	</script> -->
-	<!-- <script type="text/javascript">
+		<!-- <script type="text/javascript">
 	// 	请用JavaScript写一个format函数实现如下需求
 	// 	调用format("{v1} {v2}!", {v1: "hello", v2: "zhufeng"})返回 "hello zhufeng!" 
 	// 	调用format("{0}, {1}!", ["hello", "zhufeng"])返回 "hello, zhufeng!" 
@@ -164,7 +254,7 @@
 	//console.log(format("{0}, {1}!", ["hello", "yuanyuan"]));
 	//console.log(format("{0}, {1}!", "hello", "666"));
 	</script> -->
-	<!-- <script type="text/javascript">
+		<!-- <script type="text/javascript">
 		var arr=[
 			{name:'小秦',
 			age:24,
@@ -181,7 +271,7 @@
 		}
 		getInfo(arr);
 	</script> -->
-	<!-- <script type="text/javascript">
+		<!-- <script type="text/javascript">
 		var arr=[1,2,3,4,5,6,7,8,9];
 		function dele(a,m,n){
 			a.splice(m-1,n-m+1);
@@ -189,7 +279,7 @@
 		}
 		console.log(dele(arr,5,7));
 	</script> -->
-	<!-- <script type="text/javascript">
+		<!-- <script type="text/javascript">
 		var num=112299;
 		var arr1=['零','壹','贰','叁','肆','伍','陆','柒','捌','玖'];
 		var str=num.toString().replace(/\d/g,function(n){
@@ -198,7 +288,7 @@
 		console.log(str);
 		console.log(typeof str);
 	</script> -->
-	<!-- <script type="text/javascript">
+		<!-- <script type="text/javascript">
 		var arr1=['零','壹','贰','叁','肆','伍','陆','柒','捌','玖'];
 		var arr=['壹','贰',3,4,'伍'];
 		// for(var i=0;i<arr.length;i++){
@@ -216,7 +306,7 @@
 		console.log(sss);
 		console.log(typeof sss);
 	</script> -->
-	<!-- <script type="text/javascript">
+		<!-- <script type="text/javascript">
 		var str='www.zhufengpeixun.cn?course1=js&course=css';
 		function parseQueryString (str){
 			var obj={};
@@ -233,7 +323,7 @@
 		}
 		console.log(parseQueryString(str));
 	</script> -->
-	<!-- <script type="text/javascript">
+		<!-- <script type="text/javascript">
 		var arr=['90px','100px','10px','45px','30px']; 
 		// for(var i=0;i<arr.length;i++){
 		// 	var item=0;
@@ -251,7 +341,7 @@
 		})
 		console.log(arr);
 	</script> -->
-	<!-- <ul id = "ul1" >
+		<!-- <ul id = "ul1" >
 	<li> nodeList </li>  
 	<li> nodeList </li>  
 	<li> nodeList </li>  
@@ -260,14 +350,14 @@
 	<li> nodeList </li>  
 	<li> nodeList </li>  
 	</ul> -->
-	<!-- <script type="text/javascript">
+		<!-- <script type="text/javascript">
 		var lis=document.getElementById('ul1').childNodes;
 		console.log(lis);
 		while(lis[0]){
 			lis[0].parentNode.removeChild(lis[0]);
 		}
 	</script> -->
-	<!-- <script type="text/javascript">
+		<!-- <script type="text/javascript">
 		var eles = document.getElementById('ul1').getElementsByTagName('li');
 		//目的是把所有的li都删除以下这种做法有没有问题为什么会出问题如何解决 
 		var liLength = eles.length
@@ -276,15 +366,15 @@
 		}
 		//eles.item(...) is null
 	</script> -->
-<!-- <div name='A'> InfoA - 1 </div> 
+		<!-- <div name='A'> InfoA - 1 </div> 
 <div name='A'> InfoA - 2 </div> 
 <div name='B'> InfoB - 1 </div> -->
-    <!--
+		<!--
   <script>
     var box=document.getElementById('box');
     for(var i=1;i<10;i++){ for(var j=1;j<=i;j++){ box.innerHTML+=i+'*'+j+'='+i*j+' &nbsp'; }
     box.innerHTML+='<br/>' } </script> -->
-  <!-- <script>
+		<!-- <script>
   var box=document.getElementById('box');
   var i=1;
   while (i<10) {
@@ -297,7 +387,7 @@
     i++;
   }
   </script> -->
-              <!-- <script>
+		<!-- <script>
     var box = document.getElementById('box');
     var i = 1;
     do {
@@ -310,7 +400,7 @@
       i++;
     } while (i < 10)
   </script> -->
-              <!-- <script>
+		<!-- <script>
     var time = new Date();
     console.log(time);
     var day = time.getDay();
@@ -339,7 +429,7 @@
         break;
     }
   </script> -->
-              <!-- <script>
+		<!-- <script>
     var time = new Date();
     var day = time.getDay();
     alert(day);
@@ -359,14 +449,14 @@
       alert('星期六')
     }
   </script> -->
-              <!-- <script type="text/javascript">
+		<!-- <script type="text/javascript">
   	function fn (n,m){
 		return Math.floor(Math.random()*(m-n+1)+n)
 	}
 	var a=fn(5,7)
 	console.log(a);
   </script> -->
-              <!-- <script type="text/javascript">
+		<!-- <script type="text/javascript">
 		//记录当前的时间
     var date1=new Date();
     //console.log(date1);
@@ -394,7 +484,7 @@
 		var time='相差'+days+'天'+hours+'小时'+minutes+'分'+seconds+'秒';
 		console.log(time);
   </script> -->
-<!-- <script type="text/javascript">
+		<!-- <script type="text/javascript">
 	//只要name为A的值 不要name为B的值
 var divs=document.getElementsByTagName('div');
 var divsValue='';
@@ -410,7 +500,7 @@ for (var i=0;i<divs.length;i++) {
 console.log(divsValue);// InfoA - 1 , InfoA - 2 
 
 </script> -->
-<!-- <script type="text/javascript">
+		<!-- <script type="text/javascript">
 	 // var arr=[33,5,77,88,9,31,22]; 
 	 // var item=0;
 	 // for(var i=0;i<arr.length;i++){
@@ -424,6 +514,6 @@ console.log(divsValue);// InfoA - 1 , InfoA - 2
 	 // var a=Math.max(33,5,77,88,9,31,22)
 	 // console.log(a);
 </script> -->
-</body>
+	</body>
 
 </html>

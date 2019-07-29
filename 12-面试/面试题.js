@@ -1034,85 +1034,185 @@ alert(data.b);//window的
 alert(data.c);//2
 哪个能正确弹出数据 为什么 ?
 
-9. 如何判断数据的类型 ?
+//9. 如何判断数据的类型 ?
+/**
+ * 基本数据类型 用typeof 
+ * 复杂数据类型 用instanceof
+ */
+
+
+//10. canvas绘制的图形如何存储 ?
 
 
 
-10. canvas绘制的图形如何存储 ?
+//11. 在String中写一个方法trim, 要求能够去除一个字符串开始和结尾的空格。
+String.prototype.trim=function(){
+	var reg=/^\s+\s+$/g;
+	return this.replace(reg,'');
+}
+
+
+//12. 用JS写一个动态的, 格式为..年..月..日..时..分..秒的方法。
+<script type="text/javascript">
+			function clock() {
+				var time = new Date();
+				var y = time.getFullYear();
+				var m = time.getMonth() + 1;
+				var day = time.getDate();
+				var week = time.getDay();
+				var h = time.getHours();
+				var min = time.getMinutes();
+				var second = time.getSeconds();
+				switch (week) {
+					case 0:
+						week = '日'
+						break;
+					case 1:
+						week = '一'
+						break;
+					case 2:
+						week = '二'
+						break;
+					case 3:
+						week = '三'
+						break;
+					case 4:
+						week = '四'
+						break;
+					case 5:
+						week = '五'
+						break;
+					case 6:
+						week = '六'
+						break;
+				}
+				var str='今天是'+y+'年'+m+'月'+day+'日，星期'+week+' '+h+'时'+min+'分'+min+'秒';
+				console.log(str);
+			}
+			clock();
+		</script>
 
 
 
-11. 在String中写一个方法trim, 要求能够去除一个字符串开始和结尾的空格。
 
 
+//13. 合并数组中相同的项。
+<script type="text/javascript">
+			Array.prototype.distint=function(){
+				var a=this;
+				for(var i=0;i<arr.length;i++){
+					for (var j=i+1;j<a.length;) {
+						if(a[i] == a[j]){
+							a.splice(i,1);
+						}else{
+							j++
+						}
+					}
+				}
+				return a;
+			}
+		</script>
 
-12. 用JS写一个动态的, 格式为..年..月..日..时..分..秒的方法。
-
-
-
-
-
-
-13. 合并数组中相同的项。
-
-
-14. 如何让alert弹出框中的信息换行
-
+//14. 如何让alert弹出框中的信息换行
+<script type="text/javascript">
+			alert("改革春风吹\n满地")
+		</script>
 
 
 
 
 15.
-	<
-	form name = "form1" >
-	<
-	input type = "radio"
-name = "radio" > < /input>  <
-input type = "radio"
-name = "radio" > < /input>  <
-input type = "radio"
-name = "radio" > < /input>  <
-input type = "radio"
-name = "radio" > < /input>  <
-input type = "radio"
-name = "radio" > < /input>  <
-input type = "radio"
-name = "radio" > < /input>  < /
-	form >
+<form name = "form1" >
+<input type = "radio" name = "radio" > < /input>  
+<input type = "radio" name = "radio" > < /input> 
+<input type = "radio" name = "radio" > < /input>  
+<input type = "radio" name = "radio" > < /input>  
+<input type = "radio" name = "radio" > < /input>  
+<input type = "radio" name = "radio" > < /input>  
+</form >
 	如何知道选中的是第几个
+<form name = "form1" >
+		<input type = "radio" name = "radio" >1 
+		<input type = "radio" name = "radio" >1 
+		<input type = "radio" name = "radio" > 1
+		<input type = "radio" name = "radio" > 1
+		<input type = "radio" name = "radio" > 1
+		<input type = "radio" name = "radio" > 1
+		</form >
+			<script type="text/javascript">
+				var inputs=document.getElementsByTagName('input');
+				for(var i=0;i<inputs.length;i++){
+					(function(i){
+						inputs[i].onclick=function(){alert(i+1)}
+					})(i)
+				}
+			</script>
 
 
 
+//16. 找出数字数组中最大的元素 使用Math.max函数
+<script type="text/javascript">
+	var arr=[1,2,3,4,5,6,7];
+	var maxNum=Math.max.apply(null,arr);
+	console.log(maxNum);
+</script>
 
-16. 找出数字数组中最大的元素 使用Math.max函数
+//17. 转化一个数字数组为function数组 每个function都弹出相应的数字
+
+<script type="text/javascript">
+				var arr=[1,2,3,4,5,6,7];
+				Array.prototype.toFunction=function(){
+					for(var i=0;i<this.length;i++){
+						this[i]=(function(a){
+							return function(){
+								return a;
+							}
+						})(this[i])
+					}
+				}
+				arr.toFunction()
+				console.log(arr[6]());
+		</script>
+
+//18. 给object数组进行排序 排序条件是每个元素对象的属性个数
 
 
-17. 转化一个数字数组为function数组 每个function都弹出相应的数字
 
+//19. 利用JavaScript打印出Fibonacci数 不使用全局变量 
+<script type="text/javascript">
+			function fb(n){
+				var arr =n>1?[1]:[];
+				if(n>1){ 
+					for(var i=1;i<n;i++){
+						arr.push(arr[i-1]+(i>=2?arr[i-2]:0))
+					}
+				}
+				console.log(arr);
+			}
+			fb(5)
+		</script>
 
-
-18. 给object数组进行排序 排序条件是每个元素对象的属性个数
-
-19. 利用JavaScript打印出Fibonacci数 不使用全局变量 不懂Fibonacci数自己百www.docin.com版权所有 北京珠峰时代技术培训有限公司 http: //www.zhufengpeixun.cn 
-
-	咨询QQ 1144709265 手机: 15010063597
-9 度哈
-
-
-20. 实现如下语法的功能
+//20. 实现如下语法的功能
 var a = (5).plus(3).minus(6);
+	<script type="text/javascript">
+			Number.prototype.plus=function(n){
+				return this+n
+			}
+			Number.prototype.minus=function(n){
+				return this-n
+			}
+		</script>
+
+// 21. 实现如下语法的功能
+// var a = add(2)(3)(4);
 
 
-21. 实现如下语法的功能
-var a = add(2)(3)(4);
-
-
-22. 实现输出document对象中所有成员的名称和类型
+//22. 实现输出document对象中所有成员的名称和类型
 
 
 
 
-23. 如何获得一个DOM元素的绝对位置 获取元素位置 不依赖框架
+23. 如何获得一个DOM元素的绝对位置 获取元素位置 不依赖框架
 
 
 
@@ -1235,126 +1335,3 @@ D.div1元素在原来的位置被移除了
 
 13. 写出和$('#div1+li') 选择器相对应的jquery方法
 
-https: //segmentfault.com/a/1190000016344599
-	一、 对于MVVM的理解？
-
-二、 Vue的生命周期
-
-三、 Vue实现数据双向绑定的原理： Object.defineProperty（）
-
-四、 Vue组件间的参数传递
-
-
-
-五、 Vue的路由实现： hash模式 和 history模式
-
-
-六、 Vue与Angular以及React的区别？
-
-
-
-
-七、 vue路由的钩子函数
-
-
-
-
-八、 vuex是什么？ 怎么使用？ 哪种功能场景使用它？
-
-
-
-
-
-
-九、 vue - cli如何新增自定义指令？
-
-
-
-
-
-
-
-十、 vue如何自定义一个过滤器？
-
-
-
-
-
-
-
-十一、 对keep - alive 的了解？
-
-
-
-
-
-十二、 一句话就能回答的面试题
-
-1. css只在当前组件起作用
-答： 在style标签中写入scoped即可 例如： < style scoped > < /style>
-
-2. v -
-	if 和 v - show 区别
-答： v - if按照条件是否渲染， v - show是display的block或none；
-
-3. $route和$router的区别
-答： $route是“ 路由信息对象”， 包括path， params， hash， query， fullPath， matched， name等路由信息参数。 而$router是“ 路由实例” 对象包括了路由的跳转方法， 钩子函数等。
-
-4. vue.js的两个核心是什么？
-答： 数据驱动、 组件系统
-
-5. vue几种常用的指令
-答： v -
-	for、 v -
-	if、 v - bind、 v - on、 v - show、 v -
-	else
-
-		6. vue常用的修饰符？
-答：.prevent: 提交事件不再重载页面；.stop: 阻止单击事件冒泡；.self: 当事件发生在该元素本身而不是子元素的时候会触发；.capture: 事件侦听， 事件发生的时候会调用
-
-7. v - on 可以绑定多个方法吗？
-答： 可以
-
-8. vue中 key 值的作用？
-答： 当 Vue.js 用 v -
-	for 正在更新已渲染过的元素列表时， 它默认用“ 就地复用” 策略。 如果数据项的顺序被改变， Vue 将不会移动 DOM 元素来匹配数据项的顺序， 而是简单复用此处每个元素， 并且确保它在特定索引下显示已被渲染过的每个元素。 key的作用主要是为了高效的更新虚拟DOM。
-
-9. 什么是vue的计算属性？
-答： 在模板中放入太多的逻辑会让模板过重且难以维护， 在需要对数据进行复杂处理， 且可能多次使用的情况下， 尽量采取计算属性的方式。 好处：① 使得数据处理结构清晰；② 依赖于数据， 数据更新， 处理结果自动更新；③ 计算属性内部this指向vm实例；④ 在template调用时， 直接写计算属性名即可；⑤ 常用的是getter方法， 获取数据， 也可以使用set方法改变数据；⑥ 相较于methods， 不管依赖的数据变不变， methods都会重新计算， 但是依赖数据不变的时候computed从缓存中获取， 不会重新计算。
-
-10. vue等单页面应用及其优缺点
-答： 优点： Vue 的目标是通过尽可能简单的 API 实现响应的数据绑定和组合的视图组件， 核心是一个响应的数据绑定系统。 MVVM、 数据驱动、 组件化、 轻量、 简洁、 高效、 快速、 模块友好。
-缺点： 不支持低版本的浏览器， 最低只支持到IE9； 不利于SEO的优化（ 如果要支持SEO， 建议通过服务端来进行渲染组件）； 第一次加载首页耗时相对长一些； 不可以使用浏览器的导航按钮需要自行实现前进、 后退。
-
-11. 怎么定义 vue - router 的动态路由 ? 怎么获取传过来的值
-答： 在 router 目录下的 index.js 文件中， 对 path 属性加上 /: id， 使用 router 对象的 params.id 获取。
-
-http: //www.bslxx.com/a/mianshiti/tiku/2019/0618/2231.html
-
-
-
-
-
-
-	http: //www.bslxx.com/a/mianshiti/tiku/2019/0316/2217.html
-
-
-
-	http: //www.bslxx.com/a/mianshiti/tiku/2018/1009/2157.html
-
-
-
-
-	http: //www.bslxx.com/a/mianshiti/tiku/2018/0911/2141.html
-
-
-
-
-
-
-	http: //www.bslxx.com/a/mianshiti/tiku/2018/0911/2142.html
-
-
-
-
-	http: //www.bslxx.com/a/mianshiti/tiku/2018/0622/2006.html
