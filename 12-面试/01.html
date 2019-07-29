@@ -9,7 +9,139 @@
 </head>
 
 <body>
-	 <script type="text/javascript">
+
+	<!-- <script>
+		function inserAfter(oldEle,newEle){
+			if(oldEle&&oldEle.nodeType === 1&&newEle&&newEle.nodeType === 1){
+				oldEle.nextSibling?oldEle.parentNode.inserBefore(newEle,oldEle.nextSibling):oldEle.parentNode.appendChild(newEle)
+			}else{
+				throw new Error('错误')
+			}
+			}
+	var box1=document.getElementById('box1');
+	var box2=document.getElementById('box1').cloneNode(true);
+	inserAfter(box1,box2);
+		</script> -->
+<!-- 	<script>
+		//3562123761  -> 3,562,123,761 
+	var str='3562123761';
+	var count=0;
+	var str1='';
+	for(var i=str.length-1;i>=0;i--){
+		if(count%3 ==0 && count!=0){
+			str1+=',';
+		}
+		str1+=str.substr(i,1);
+		count++;
+	}
+	str1=str1.split('').reverse().join('');
+	console.log(str1);
+		</script> -->
+	<!-- <script type="text/javascript">
+		var str='sdjksfssscfssdd';
+		var num=[];
+		//字符串去重后的数组
+		var res=[];
+		var count=0;
+		var arr=str.split('');
+		//数组去重
+		for (var i=0;i<arr.length;i++) {
+			if (res.indexOf(arr[i]) == -1) {
+				res.push(arr[i]);
+			}
+		}
+		//console.log(res);
+		//有重复的就count++
+		for(var i=0;i<res.length;i++){
+			for(var j=0;j<arr.length;j++){
+				if (arr[j] == res[i]) {
+					count++;
+				}
+			}
+			num.push(count);
+			count=0;
+			}
+			//console.log(num);
+		for(var i=0 ;i<res.length;i++){
+			console.log(res[i]+'出现了'+num[i]+'次');
+		}
+	</script> -->
+	<!-- <script type="text/javascript">
+		//正则方法
+		// var str='border-bottom-color';
+		// var strReg=str.replace(/\-[a-z]/g,function(part){
+		// 	return part.charAt(1).toUpperCase();
+		// })
+		// console.log(strReg);
+		var str='o-div-style-position';
+		var arr=str.split('-');
+		console.log(arr);
+		for(var i=1;i<arr.length;i++){
+			arr[i]=arr[i].charAt(0).toUpperCase()+arr[i].substr(1,arr[i].length-1)
+		}
+		var str1=arr.join('')
+		console.log(str1);
+	</script> -->
+	<!-- <script type="text/javascript">
+		 var str = "www.taobao.com"; 
+		 var res=str.split('').reverse().join('').replace('oat','')
+		 console.log(res);
+	</script> -->
+	<!-- <script type="text/javascript">
+		 var str="aacccbbeeeddd"; 
+		 //保存字符出现的次数
+		 var sum=[];
+		 //字符串去重后的数组
+		 var res=[];
+		 //出现的次数
+		 var count=0;
+		  var arr=str.split(""); 
+		  for(var i=0;i<arr.length;i++){
+			  if (res.indexOf(arr[i]) == -1) {
+			  	res.push(arr[i])
+			  }
+		  }
+		  for(var i=0;i<res.length;i++){
+			  for(var j=0;j<arr.length;j++){
+				  if(arr[j] == res[i]){
+					  count++
+				  }
+			  }
+			  sum.push(count);
+			  count =0;
+		  }
+		  for(var i=0;i<res.length;i++){
+			 //var str=(sum[i]%2==0)?"偶数":"奇数"; 
+      console.log(res[i]+"出现了"+sum[i]+"次"); 
+      //console.log(res[i]+"出现了"+str+"次"); 
+		  }
+		  
+	</script> -->
+	<!-- <script type="text/javascript">
+		 var str="aahhgggsssjjj";
+		 function fn(str){
+			 var res=[];
+			 var arr=str.split('');
+			 for(var i=0;i<arr.length;i++){
+				 if(res.indexOf(arr[i]) == -1){
+					 res.push(arr[i]);
+				 }
+			 }
+			 return res.join('');
+		 }
+		 console.log(fn(str));
+	</script> -->
+	<!-- <script type="text/javascript">
+		var str="asadajhjkadaaasdasdasdasd"; 
+		var arr=[]; 
+		var pos=str.indexOf("d"); 
+		while (pos>-1){
+			arr.push(pos);
+			pos=str.indexOf('d',pos+1);
+		}
+		console.log(arr);
+	</script> -->
+	<!-- <script type="text/javascript">
 	// 	请用JavaScript写一个format函数实现如下需求
 	// 	调用format("{v1} {v2}!", {v1: "hello", v2: "zhufeng"})返回 "hello zhufeng!" 
 	// 	调用format("{0}, {1}!", ["hello", "zhufeng"])返回 "hello, zhufeng!" 
@@ -20,15 +152,18 @@
 		if(arguments.length>2){
 			obj=Array.prototype.slice.call(arguments,1);
 		}
+		//console.log(obj);
+		//attr是对象的键
 		for (var attr in obj) {
+			console.log(attr);
 			str=str.replace('{'+attr+'}',obj[attr]);
 		}
 		return str;
 	}
-	console.log(format("{v1},{v2}!", {v1: "hello", v2: "mengyang"}));
-	console.log(format("{0}, {1}!", ["hello", "yuanyuan"]));
-	console.log(format("{0}, {1}!", "hello", "666"));
-	</script>
+	//console.log(format("{v1},{v2}!", {v1: "hello", v2: "mengyang"}));
+	//console.log(format("{0}, {1}!", ["hello", "yuanyuan"]));
+	//console.log(format("{0}, {1}!", "hello", "666"));
+	</script> -->
 	<!-- <script type="text/javascript">
 		var arr=[
 			{name:'小秦',
