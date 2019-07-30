@@ -1212,16 +1212,15 @@ var a = (5).plus(3).minus(6);
 
 
 
-23. 如何获得一个DOM元素的绝对位置 获取元素位置 不依赖框架
+// 23. 如何获得一个DOM元素的绝对位置 获取元素位置 不依赖框架
 
 
 
 
-24. 如何利用JS生成一个table
+// 24. 如何利用JS生成一个table
 
 
-25. 实现预加载一张图片 加载完成后显示在网页中并设定其高度为50px;
-宽度为50px;
+// 25. 实现预加载一张图片 加载完成后显示在网页中并设定其高度为50px;宽度为50px;
 
 
 
@@ -1234,75 +1233,135 @@ var a = (5).plus(3).minus(6);
 
 
 
-26. 假设有一个4行td的table 将table里面td顺序颠倒
+// 26. 假设有一个4行td的table 将table里面td顺序颠倒
 
 
 
 
 
-27. 模拟一个HashTable类 包含有add、 remove、 contains、 length方法 一个类上注
-册四个方法
+// 27. 模拟一个HashTable类 包含有add、 remove、 contains、 length方法 一个类上注册四个方法
 
 
-28. js如何实现面向对象和继承机制
+//28. js如何实现面向对象和继承机制
+一. 面向对象
+1. 通过Object构造函数创建对象
+var school =new Object();
+school.name='孟洋';
+school.teachear='yuanyuan';
+school.sayName=function(){
+	alert(this.name)
+}
+school.sayName();
+2. 对象字面量创建对象
+var school={
+	name='孟洋',
+	teachear='yuanyuan',
+	sayName=function(){
+		alert(this.name)
+	}
+}
+school.sayName()
+new 函数实例和字面量创建 会产生大量的重复代码
+3. 工厂模式
+function createSchool(name,teachear){
+	var o={};
+	o.name=name
+	o.teachear=teachear;
+	o.sayName=function(){
+		alert(this.name)
+	}
+}
+工厂函数解决不对象识别的问题
+4. 构造函数
+function School (name,teachear){
+	this.name=name,
+	this.teachear=teachear,
+	this.sayName=function(){
+		alert(this.name)
+	}
+}
+var school=new School('mengyang','yuanyuan');
+school.sayName();
+每个方法都需要在每个实例上创建一遍 
+5. 原型模式
+fnction School (name,teachear,){
+	this.name=name,
+	this.teachear=teachear,
+	this.students=['mmmm','nnnnn'],
+}
+School.prototype={
+	constructor:School,
+	sayName:function(){
+		alert(this.name)
+	}
+}
 
 
 
 
+//29. Js模块的封装方法 比如怎样实现私有变量 不能直接赋值 只能通过共有方法访问。
 
-29. Js模块的封装方法 比如怎样实现私有变量 不能直接赋值 只能通过共有方法访问。
+//30. 对闭包的理解 闭包的好处和坏处
+优点:加强封装性 可以对变量达到保护作用(保存,保护),
+缺点:内存浪费
 
-30. 对闭包的理解 闭包的好处和坏处
 
 
+//31. 对JS中函数绑定的理解 函数绑定可以使用哪两个函数 函数绑定一般使用在什么情况下 这两个函数的区别是什么
 
 
-31. 对JS中函数绑定的理解 函数绑定可以使用哪两个函数 函数绑定一般使用在什么情
-况下 这两个函数的区别是什么
 
 
+//32. JQuery的特点。
+轻量级JS框架
+选择器很方便
+链式操作方便
+简化js操作css代码
+简化Ajax操作
 
 
-32. JQuery的特点。
+1 Ajax读取一个xml文档并进行解析的实例
 
 
+//2 简述Ajax异步机制 Ajax有哪些的好处和弊端 介绍一下Ajax异步请求的原理和过程
 
-1 Ajax读取一个xml文档并进行解析的实例
 
 
-2 简述Ajax异步机制 Ajax有哪些的好处和弊端 介绍一下Ajax异步请求的原理和
-过程
 
 
 
 
 
+//1. jQuery对象是数组吗 jQuery是用什么方法来保存查找到的DOM对象的
+不是数组 是类数组 
+用$()将dom对象包装起来 就可以获得一个jQuery对象
 
+//2. jQuery的链式写法的原理是什么
+1. 通过原型方法和return this的形式来实现跨浏览器的链式调用
+2. 利用JS下的简单工厂模式 来讲所有对于同一dom的对象的操作指定同一个实例
 
 
-1. jQuery对象是数组吗 jQuery是用什么方法来保存查找到的DOM对象的
+//3. JQ选择器中:has(selector) 和is(selector) 有什么区别
+:has(selector) 保留包含特定后代的元素 去掉那些不含有指定后代的元素
+:is(selector)  根据选择器 DOM元素或jQuery对象来检测匹配元素集合,如果其中至少有一个元素符合这个给定的表达式就返回true
+//4.:first-child和first有什么区别
+:first 只会匹配第一个ul中第一个元素li
+:first-child 在每个ul中查找第一个li
 
 
-2. jQuery的链式写法的原理是什么
+//5. 简述在jQuery中innerWidth(), outerWidth(), outerWidth(true) 和width的区别
+innerWidth() 获取第一个匹配元素内部区域宽度 (包括padding 不包括边框)
+outerWidth() 获取第一个匹配元素外部宽度(包括padding和边框)
+outerWidth(true) 设置为 true时 计算边距在内 默认值是false
+width 定义元素内容区的宽度
 
+//6. 简述在jQuery中scroll和scrollTop这两个方法的区别
+scroll 在每一个匹配元素的scroll时间中绑定一个处理函数
+scrollTop 获取匹配元素相对滚动条顶部的偏移
 
 
-3. JQ选择器中: has(selector) 和is(selector) 有什么区别
 
-4.: first - child和first有什么区别
-
-
-
-
-5. 简述在jQuery中innerWidth(), outerWidth(), outerWidth(true) 和width的区别
-
-
-6. 简述在jQuery中scroll和scrollTop这两个方法的区别
-
-
-
-
-7. 选择题 以下关于$('div1').append('p') 表达正确的是
+7. 选择题以下关于$('div1').append('p') 表达正确的是AC
 A.div1元素追加p元素为子节点.
 B.p元素追加div1元素为子节点。
 C.p元素在原来的位置被移除了。
@@ -1310,28 +1369,28 @@ D.div1元素在原来的位置被移除了
 
 
 
-8. 选择器里不能加逗号 fllter过虑器方法可以解决这一问题
+//8. 选择器里不能加逗号 fllter过虑器方法可以解决这一问题
 
 
 
-9. 只能通过选项器获得每个UL下索引号大于2的li 怎么取
-
-
-
-
-
-10. 用JQ获得每个UL下索引号大于2的li 怎么取
-
-
-11.($("li:first-child,li:last-child,li:contains(4)").css('background', 'green'));
-是什么意思
+//9. 只能通过选项器获得每个UL下索引号大于2的li 怎么取
 
 
 
 
 
-12. find, children, filter的区别
+//10. 用JQ获得每个UL下索引号大于2的li 怎么取
 
 
-13. 写出和$('#div1+li') 选择器相对应的jquery方法
+//11.($("li:first-child,li:last-child,li:contains(4)").css('background', 'green'));是什么意思
+获取每个ul下的第一个 最后一个 和文本字符串包含4的元素
 
+
+
+
+//12. find, children, filter的区别
+filter是对自身集合元素的操作 children 是对子元素的检索 find是对他的后代元素的检索操作
+
+
+//13. 写出和$('#div1+li') 选择器相对应的jquery方法
+$(#div1).next('li')
