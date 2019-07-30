@@ -9,14 +9,32 @@
 	</head>
 
 	<body>
-		<script type="text/javascript">
+		<div id="app"></div>
+		<input type="text" id="txt">
+		<p id="show"></p>
+		<script>
+		var obj={};
+		Object.defineProperty(obj,'txt',{
+			get:function(){
+				return obj
+			},
+			set:function(newValue){
+				document.getElementById('txt').value=newValue;
+				document.getElementById('show').innerHTML=newValue;
+			}
+		})
+		document.addEventListener('keyup',function(e){
+			obj.txt=e.target.value;
+		})
+		</script>
+		<!-- <script type="text/javascript">
 			Number.prototype.plus=function(n){
 				return this+n
 			}
 			Number.prototype.minus=function(n){
 				return this-n
 			}
-		</script>
+		</script> -->
 		<!-- <script type="text/javascript">
 				var arr=[1,2,3,4,5,6,7];
 				Array.prototype.toFunction=function(){
