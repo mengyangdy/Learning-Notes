@@ -97,6 +97,229 @@ function Person(firstName, lastName) {
 const member = new Person("Lydia", "Hallie");
 Person.getFullName = () => this.firstName + this.lastName;
 console.log(member.getFullName());
+//12 Person {firstName: "Lydia", lastName: "Hallie"} and undefined
+/**
+ * 没有用new指的是全局对象
+ * 相当于this.firstName="Sarah"  实际上global.firstName ='Sarah'
+ *       this.lastName="Smith"   实际上global.lastName ='Smith'
+ * sarah本身的返回值是undefined
+ * 
+ */
+function Person(firstName, lastName) {
+  this.firstName = firstName;
+  this.lastName = lastName;
+}
+const lydia = new Person("Lydia", "Hallie");
+const sarah = Person("Sarah", "Smith");
+console.log(lydia);
+console.log(sarah);
+/**
+ * 13 事件传播的三个阶段是什么?  D
+A: 目标 > 捕获 > 冒泡
+B: 冒泡 > 目标 > 捕获
+C: 目标 > 冒泡 > 捕获
+D: 捕获 > 目标 > 冒泡
+
+除基础对象外 所有对象都有原型 基础对象可以访问某些方法 例如toString  
+虽然JavaScript无法直接在您的对象上找到它，但它会沿着原型链向下寻找并在那里找到它，这使您可以访问它。
+基础对象指原型链终点的对象。基础对象的原型是null。
+ */
+// 14  字符串12
+/**
+ * 
+ * @param {*} a 
+ * @param {*} b 
+ * 在不知情的情况下 值自动转化为另一种类型 称之为隐式类型转换 强制从一种类型转化为另一种类型
+ */
+function sum(a, b) {
+  return a + b;
+}
+
+var a=sum(1, "2");
+console.log(a);
+console.log(typeof a);
+//15   0  2  2
+let number = 0;
+console.log(number++);
+console.log(++number);
+console.log(number);
+//16  ["", "is", "years old"] Lydia 21
+/**
+ * 
+使用模板字符串传值第一个参数的值始终是字符串值的数组。 其余参数获取传递到模板字符串中的表达式的值 也就是三个参数为 ：
+（['','is','years old'],Lydia,21）
+ */
+function getPersonInfo(one, two, three) {
+  console.log(one);
+  console.log(two);
+  console.log(three);
+}
+const person = "Lydia";
+const age = 21;
+getPersonInfo`${person} is ${age} years old`;
+//17  Hmm.. You don't have an age I guess
+/**
+ * 
+ * @param {*} data 
+ * 在比较相等性中 原始类型通过值比较 对象通过他们的引用进行比较  而此题检查对象是否具有对内存中相同位置的引用 
+ * 作为参数传递的对象和我们用于检查相等性的对象在内存中位于不同位置，所以它们的引用是不同的
+ */
+function checkAge(data) {
+  if (data === { age: 18 }) {
+    console.log("You are an adult!");
+  } else if (data == { age: 18 }) {
+    console.log("You are still an adult.");
+  } else {
+    console.log(`Hmm.. You don't have an age I guess`);
+  }
+}
+checkAge({ age: 18 });
+//18 object
+//扩展运算符（... args）返回一个带参数的数组
+function getAge(...args) {
+  console.log(typeof args);
+}
+getAge(21);
+//19  错误
+//严格模式
+function getAge() {
+  "use strict";
+  age = 21;
+  console.log(age);
+}
+getAge();
+//20    105 eval()计算某个字符串
+const sum = eval("10*10+5");
+console.log(sum);
+//21  关闭选项卡
+/**
+ * 关闭选项卡后，将删除存储在sessionStorage中的数据。如果使用localStorage，数据将永远存在，除非例如调用localStorage.clear()。
+ */
+sessionStorage.setItem("cool_secret", 123);
+//22 10 
+/**
+ * 使用var关键字，您可以用相同的名称声明多个变量。然后变量将保存最新的值。您不能使用let或const来实现这一点，因为它们是块作用域的。
+ */
+var num = 8;
+var num = 10;
+console.log(num);
+//23  true true false true
+const obj = { 1: "a", 2: "b", 3: "c" };
+const set = new Set([1, 2, 3, 4, 5]);
+obj.hasOwnProperty("1");
+obj.hasOwnProperty(1);
+set.has("1");
+set.has(1);
+//24 { a: "three", b: "two" }
+/**
+ * 如果对象有两个具有相同名称的键，则将替前面的键。它仍将处于第一个位置，但具有最后指定的值
+ */
+const obj = { a: "one", b: "two", a: "three" };
+console.log(obj);
+//25  1  2  4
+for (let i = 1; i < 5; i++) {
+  if (i === 3) continue;
+  console.log(i);
+}
+//25    Just give Lydia pizza already!
+String.prototype.giveLydiaPizza = () => {
+  return "Just give Lydia pizza already!";
+};
+const name = "Lydia";
+name.giveLydiaPizza();
+// 26  456
+const a = {};
+const b = { key: "b" };
+const c = { key: "c" };
+a[b] = 123;
+a[c] = 456;
+console.log(a[b]);
+//27 First Third Second
+const foo = () => console.log("First");
+const bar = () => setTimeout(() => console.log("Second"));
+const baz = () => console.log("Third");
+bar();
+foo();
+baz();
+//28 单击按钮时event.target是什么? button 
+<div onclick="console.log('first div')">
+  <div onclick="console.log('second div')">
+  <button onclick="console.log('button')">
+    Click!
+  </button>
+</div>
+</div>
+//29 p div
+/**
+ *  默认情况下，事件处理程序在冒泡阶段执行（除非您将useCapture设置为true）。 它从最深的嵌套元素向外延伸。
+ */
+<div onclick="console.log('div')">
+  <p onclick="console.log('p')">
+    Click here!
+  </p>
+</div>
+//30 下面这些值哪些是假值? JavaScript中只有6个假值：undefined  null  NaN  0  '' (empty string)   false
+var num=0;
+new Number(0);
+("");
+(" ");
+new Boolean(false);
+undefined;
+//31 返回string
+console.log(typeof typeof 1);
+//32  [ 1, 2, 3, <7 empty items>, 11 ]
+const numbers = [1, 2, 3];
+numbers[10] = 11;
+console.log(numbers);
+//33  1 undefined 2
+(() => {
+  let x, y;
+  try {
+    throw new Error();
+  } catch (x) {
+    (x = 1), (y = 2);
+    console.log(x);
+  }
+  console.log(x);
+  console.log(y);
+})();
+//34  [1, 2, 0, 1, 2, 3]
+[[0, 1], [2, 3]].reduce(
+  (acc, cur) => {
+    return acc.concat(cur);
+  },
+  [1, 2]
+);
+// 35  false false true
+!!null;
+!!"";
+!!1;
+//36   setInterval返回一个唯一的id
+setInterval(() => console.log("Hi"), 1000);
+//37  下面代码的返回值是什么? ["L", "y", "d", "i", "a"]
+[..."Lydia"];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -312,7 +535,6 @@ fn(30)(50);
 f(30);
 //13
 var i = 10;
-
 function fn() {
   return function (n) {
     console.log(n + (++i));
