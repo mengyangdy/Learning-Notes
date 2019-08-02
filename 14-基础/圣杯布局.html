@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .header{
+      height: 40px;
+      background: red;
+    }
+    .footer{
+      height: 40px;
+      background: green;
+    }
+    .container{
+      background: #000000;
+      padding: 0 200px;
+      overflow: hidden;
+    }
+    .main,.left,.right{
+      float: left;
+      height: 200px;
+    }
+    .main{
+      width: 100%;
+      background:  #35bbaa;
+    }
+    .left,.right{
+      width: 200px;
+    }
+    /* 通过负边距把元素放到main的前面，值为main元素的宽度 */
+    .left{
+    background:  #abcdef;
+    margin-left: -100%;   
+    position: relative;
+    left: -200px;
+    }
+    /* 通过负边距把元素放到main的后面，值为自身宽度 */
+    .right{
+   background: #666;
+   margin-left: -200px; 
+   position: relative;
+   right: -200px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h4>开头</h4>
+  </div>
+  <div class="container">
+    <div class="main">
+      圣杯布局
+    </div>
+    <div class="left"></div>
+    <div class="right"></div>
+  </div>
+  <div class="footer">
+    <h4>这是尾部</h4>
+  </div>
+</body>
+</html>
